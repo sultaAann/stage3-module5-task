@@ -1,0 +1,64 @@
+plugins {
+    id 'java-base'
+}
+
+wrapper {
+    gradleVersion = gradlewVersion
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+    group = 'com.mjc.school'
+
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // https://mvnrepository.com/artifact/com.h2database/h2
+        implementation 'com.h2database:h2:2.2.220'
+        testImplementation 'com.h2database:h2:2.2.220'
+        implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa:$dataJpaVersion"
+        implementation "org.springframework:spring-context:$springVersion"
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.7'
+
+        // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+        implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
+
+        // Spring Test
+        testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.7'
+        // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+        testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.1'
+
+
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
+        testImplementation "com.tngtech.archunit:archunit-junit5:$archUnitVersion"
+
+        implementation 'javax.validation:validation-api:2.0.1.Final'
+
+        annotationProcessor "org.mapstruct:mapstruct-processor:$mapstructVersion"
+        implementation "org.mapstruct:mapstruct:$mapstructVersion"
+    }
+    test {
+        useJUnitPlatform()
+    }
+}
+
+task repack(type: Jar, dependsOn: ':module-main:build') {
+    if (findProject(':module-main') != null) {
+        entryCompression = ZipEntryCompression.STORED
+        def buildJar = zipTree("${project(':module-main').buildDir}/libs/module-main.jar")
+        from(buildJar) { into('/') }
+        manifest {
+            attributes(
+                    'Main-Class': 'com.mjc.school.Main'
+            )
+        }
+    }
+}
