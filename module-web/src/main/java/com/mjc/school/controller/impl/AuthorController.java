@@ -76,7 +76,7 @@ public class AuthorController implements AuthorCommandsController {
     }
 
     @Override
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     @ApiOperation(value = "Update a piece of authors information", response = AuthorDTOResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully updated authors information"),
@@ -97,7 +97,7 @@ public class AuthorController implements AuthorCommandsController {
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Deletes specific author with the supplied id")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully deletes the specific author"),
+            @ApiResponse(code = 204, message = "Successfully deletes the specific author"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),

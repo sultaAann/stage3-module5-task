@@ -36,9 +36,10 @@ subprojects {
         // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
         testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.1'
 
+        // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
+        implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.7.0'
         implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
         implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
-
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion"
         testImplementation "com.tngtech.archunit:archunit-junit5:$archUnitVersion"
 

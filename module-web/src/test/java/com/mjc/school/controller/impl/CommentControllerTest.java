@@ -52,7 +52,7 @@ class CommentControllerTest {
                 .pathParam("id", 3)
                 .body("{\"content\": \"UPDATED\", \"newsId\": 5}")
         .when()
-                .put(BASE_URL + "/{id}")
+                .patch(BASE_URL + "/{id}")
         .then()
                 .statusCode(200)
                 .body("id", equalTo(3))

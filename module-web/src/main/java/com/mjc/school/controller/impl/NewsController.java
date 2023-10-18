@@ -75,7 +75,7 @@ public class NewsController implements NewsCommandsController {
     }
 
     @Override
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     @ApiOperation(value = "Update a piece of news information", response = NewsDTOResponse.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully updated news information"),
@@ -96,7 +96,7 @@ public class NewsController implements NewsCommandsController {
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Deletes specific news with the supplied id")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully deletes the specific news"),
+            @ApiResponse(code = 204, message = "Successfully deletes the specific news"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found"),

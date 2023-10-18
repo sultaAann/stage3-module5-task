@@ -56,7 +56,7 @@ class NewsControllerTest {
                         "        \"authorId\": 4\n" +
                         "    }")
         .when()
-                .put(BASE_URL + "/{id}")
+                .patch(BASE_URL + "/{id}")
         .then()
                 .statusCode(200)
                 .body("id", equalTo(3))
