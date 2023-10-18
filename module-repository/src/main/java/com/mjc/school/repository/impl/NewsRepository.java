@@ -2,7 +2,6 @@ package com.mjc.school.repository.impl;
 
 import com.mjc.school.repository.NewsCommands;
 import com.mjc.school.repository.model.impl.Author;
-import com.mjc.school.repository.model.impl.Comment;
 import com.mjc.school.repository.model.impl.News;
 import com.mjc.school.repository.model.impl.Tag;
 import com.mjc.school.repository.query.NewsSearchQueryParams;

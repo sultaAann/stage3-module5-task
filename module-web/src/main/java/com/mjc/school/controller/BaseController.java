@@ -1,7 +1,6 @@
 package com.mjc.school.controller;
 
 import com.mjc.school.controller.exceptions.ResourceNotFoundException;
-import com.mjc.school.service.exceptions.*;
 
 import java.util.List;
 
